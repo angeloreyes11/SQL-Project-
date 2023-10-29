@@ -56,7 +56,6 @@ While Israel making an appearance in the top 5 as the country with the highest r
 the other 4 spots in the top 5.
 
 
-
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
 
