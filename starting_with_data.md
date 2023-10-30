@@ -96,6 +96,10 @@ Answer: When we categorized the months into the four seasons we can understand w
 which amounted to the most out of all the other seasons. Spring came second in total revenue gained. While Fall was last place only amounting to 5119 total revenue. Although this
 answered the question, another question we could have asked is to see the correlation between the seasons and products and see why the winter season produced more revenue than others.
 
+![](https://i.imgur.com/WT59XE4.png)
+
+
+![](https://i.imgur.com/tIRzgbf.png)
 
 
 Question 3: What are the top-selling products in each category?
@@ -133,5 +137,5 @@ ORDER BY total_ordered DESC, updated_category
 Answer: Based on the results we can see that from the drinkware category was the Android 17oz Stainless Steel Sport Bottle. Then for the NEST category, the top selling product 
 is seen to be the Learning Thermostat 3rd Gen-USA - Stainless Steel. Then for the notebook/journal category the top selling product is the Hard Cover Journal.
 
-
+![](https://i.imgur.com/iHdaPiR.png)
 
