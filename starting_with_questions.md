@@ -6,7 +6,7 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 SQL Queries:
 
--- Uncleaned data --
+**-- UNCLEANED DATA --**
 
 ```SQL
 SELECT 
@@ -26,7 +26,7 @@ ORDER BY
 
 ```
 
--- CLEANING DATA WITH THE WHERE OPERATOR --
+**-- CLEANING DATA WITH THE WHERE OPERATOR --**
 
 ```SQL
 SELECT 
@@ -66,7 +66,7 @@ Israel making an appearance in the top 5 as the country with the highest revenue
 
 SQL Queries:
 
--- AVERAGE PRODUCTS ORDERED PER COUNTRY AND OVERALL COMBINED AVERAGE OF ALL COUNTRIES. --
+**-- AVERAGE PRODUCTS ORDERED PER COUNTRY AND OVERALL COMBINED AVERAGE OF ALL COUNTRIES --**
 
 ```SQL
 SELECT DISTINCT
@@ -97,7 +97,7 @@ FROM (
 ) AS CountryAverage
 ```
 
--- AVERAGE PRODUCTS ORDERED PER CITY AND OVERALL COMBINED AVERAGE OF ALL CITIES. --
+**-- AVERAGE PRODUCTS ORDERED PER CITY AND OVERALL COMBINED AVERAGE OF ALL CITIES --**
 
 ```SQL
 SELECT DISTINCT
@@ -144,8 +144,8 @@ for each country combined.
 
 SQL Queries:
 
--- country --
--- max --
+**-- COUNTRY --
+-- MAX --**
 
 ```SQL
 WITH CountryCategoryCount AS (
@@ -171,7 +171,7 @@ GROUP BY "country", product_category
 ORDER BY max_category_count DESC, "country"
 ```
 
--- min -- 
+**-- MIN -- **
 
 ```SQL
 WITH CountryCategoryCount AS (
@@ -197,9 +197,8 @@ GROUP BY "country", product_category
 ORDER BY min_category_count, "country"
 ```
 
--- city --
-
--- max -- 
+**-- CITY --
+-- MAX --**
 
 ```SQL
 WITH CityCategoryCount AS (
@@ -225,7 +224,7 @@ GROUP BY "city", product_category
 ORDER BY max_category_count DESC, "city"
 ```
 
--- min -- 
+**-- MIN --** 
 
 ```SQL
 WITH CityCategoryCount AS (
@@ -272,7 +271,7 @@ While the city of Minato had the lowest count which make sense since we saw Japa
 
 SQL Queries:
 
--- Country -- 
+**-- COUNTRY --** 
 
 ```SQL
 WITH RankedProducts AS (
@@ -307,7 +306,7 @@ GROUP BY  total_ordered_quantity, "country","city", top_selling_product, product
 ORDER BY  total_ordered_quantity DESC, "country", top_selling_product;
 ```
 
--- City --
+**-- CITY --**
 
 ```SQL
 WITH RankedProducts AS (
