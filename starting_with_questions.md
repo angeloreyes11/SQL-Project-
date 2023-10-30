@@ -24,10 +24,11 @@ GROUP BY
 ORDER BY 
 	"total_transaction_revenue" DESC 
 
+```
 
 -- CLEANING DATA WITH THE WHERE OPERATOR --
 
-
+```SQL
 SELECT 
 	"city",
 	"country",
@@ -45,6 +46,8 @@ ORDER BY
 	"total_transaction_revenue" DESC 
 LIMIT 5  
 
+```
+
 Answer:
 
 In the following data set we found out there were 80 rows that yieleded a total transation revenue. When we query that first syntax 
@@ -53,7 +56,9 @@ had missing data which omitted the city. Using the where operator we can clean t
 highest revenue data. The resulted table then had Atlanta, Sunnyvale, Tel Aviv-Yafo, Los Angeles, and Seattle as the top 5 cities with the highest revenue on site. While 
 Israel making an appearance in the top 5 as the country with the highest revenue on site, while United States rounding out the other 4 spots in the top 5.
 
+
 ![](https://i.imgur.com/a7Dvu6W.png)
+
 ![](https://i.imgur.com/ONBoDwX.png)
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
@@ -63,17 +68,24 @@ SQL Queries:
 
 -- AVERAGE PRODUCTS ORDERED PER COUNTRY AND OVERALL COMBINED AVERAGE OF ALL COUNTRIES. --
 
+```SQL
 SELECT DISTINCT
-	"country",
+ 	"country",
 	ROUND(AVG(CAST("total_ordered" AS INTEGER)), 2) AS avg_number_of_products
-FROM 	"sales_by_sku" AS sbs
-JOIN 	all_sessions AS a
-ON 	a."productSKU" = sbs."productSKU"
-WHERE 	a."country" <> '(not set)'
+FROM 	
+	"sales_by_sku" AS sbs
+JOIN 	
+	all_sessions AS a
+ON 	
+	a."productSKU" = sbs."productSKU"
+WHERE 
+	a."country" <> '(not set)'
 GROUP BY "country"
 ORDER BY "country"
+```
 
 
+```SQL
 SELECT
 	ROUND(AVG(avg_number_of_products), 2) AS overall_country_average
 FROM (
@@ -83,10 +95,11 @@ FROM (
     	JOIN 	all_sessions AS a ON a."productSKU" = sbs."productSKU"
 	GROUP BY "country"
 ) AS CountryAverage
-
+```
 
 -- AVERAGE PRODUCTS ORDERED PER CITY AND OVERALL COMBINED AVERAGE OF ALL CITIES. --
 
+```SQL
 SELECT DISTINCT
 	"city",
 	ROUND(AVG(CAST("total_ordered" AS INTEGER)), 2) AS avg_number_of_products
@@ -96,8 +109,9 @@ ON 	a."productSKU" = sbs."productSKU"
 WHERE	 a."city" <> '(not set)'
 GROUP BY "city"
 ORDER BY "city"
+```
 
-
+```SQL
 SELECT ROUND(AVG(avg_number_of_products), 2) AS overall_city_average
 FROM (
 	SELECT 
@@ -106,7 +120,7 @@ FROM (
 	JOIN 	all_sessions AS a ON a."productSKU" = sbs."productSKU"
     	GROUP BY "city"
 ) AS CityAverage
-
+```
 
 
 Answer:
@@ -117,8 +131,12 @@ for each country combined.
 
 
 ![](https://i.imgur.com/9UQ88Zc.png)
+
 ![](https://i.imgur.com/AjPmo7K.png)
+
+
 ![](https://i.imgur.com/WMaaDtq.png)
+
 ![](https://i.imgur.com/m3yLrHX.png)
 
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
@@ -129,6 +147,7 @@ SQL Queries:
 -- country --
 -- max --
 
+```SQL
 WITH CountryCategoryCount AS (
 	SELECT 
 		a."country",
@@ -150,9 +169,11 @@ SELECT
 FROM CountryCategoryCount
 GROUP BY "country", product_category
 ORDER BY max_category_count DESC, "country"
+```
 
 -- min -- 
 
+```SQL
 WITH CountryCategoryCount AS (
 	SELECT 
 		a."country",
@@ -174,11 +195,13 @@ SELECT
 FROM CountryCategoryCount 
 GROUP BY "country", product_category
 ORDER BY min_category_count, "country"
+```
 
 -- city --
 
 -- max -- 
 
+```SQL
 WITH CityCategoryCount AS (
 	SELECT 
 		a."city",
@@ -200,9 +223,11 @@ SELECT
 FROM CityCategoryCount 
 GROUP BY "city", product_category
 ORDER BY max_category_count DESC, "city"
+```
 
 -- min -- 
 
+```SQL
 WITH CityCategoryCount AS (
 	SELECT 
 		a."city",
@@ -224,7 +249,7 @@ SELECT
 FROM CityCategoryCount 
 GROUP BY "city", product_category
 ORDER BY min_category_count, "city"
-
+```
 
 Answer:
 
@@ -234,8 +259,11 @@ categories. While Japan ordered the least amount of the "lifestyle" category. Th
 While the city of Minato had the lowest count which make sense since we saw Japan oredered the least amount.
 
 ![](https://i.imgur.com/8H6pZQz.png)
+
 ![](https://i.imgur.com/KB8sWmk.png)
+
 ![](https://i.imgur.com/7oUfRdf.png)
+
 ![](https://i.imgur.com/Adxe23B.png)
 
 
@@ -246,6 +274,7 @@ SQL Queries:
 
 -- Country -- 
 
+```SQL
 WITH RankedProducts AS (
     SELECT 
         a."city",
@@ -276,9 +305,11 @@ WHERE country_rank = 1 AND
 	total_ordered_quantity > 0
 GROUP BY  total_ordered_quantity, "country","city", top_selling_product, product_category
 ORDER BY  total_ordered_quantity DESC, "country", top_selling_product;
+```
 
 -- City --
 
+```SQL
 WITH RankedProducts AS (
     SELECT 
         a."city",
@@ -308,7 +339,7 @@ WHERE city_rank = 1 AND
 	total_ordered_quantity > 0
 GROUP BY  total_ordered_quantity, "country","city", top_selling_product, product_category
 ORDER BY total_ordered_quantity DESC, "city", top_selling_product;
-
+```
 
 Answer:
 
@@ -320,6 +351,8 @@ are a cap of how many items are sold. This may be due to stock limitations. When
 was sold the most just like our country table and that it also has 456 pens sold for each city. We can also see a pattern where majority of these pens were sold in the United States.
 
 ![](https://i.imgur.com/5Ef4jj1.png)
+
+
 ![](https://i.imgur.com/poxMpfC.png)
 
 
@@ -327,6 +360,7 @@ was sold the most just like our country table and that it also has 456 pens sold
 
 SQL Queries:
 
+```SQL
 WITH RevenueGenerated AS (
 	SELECT
 		a."city",
@@ -355,13 +389,14 @@ FROM RevenueGenerated AS rg
 JOIN products AS p ON rg."productSKU" = p."SKU"
 GROUP BY "city", "country", sum_total_revenue, p."name"
 ORDER BY sum_total_revenue DESC
-
+```
 
 
 Answer:
 
 To answer this question we used a sum aggregate function and compared it with the average for total revenue. We can see that the revenue that the top 15 cities make 
 are above the average total revenue of all cities that we had filtered out. Meaning that the 32 remaining cities are not making enough revenue compared to the average of the cities.
+
 
 ![](https://i.imgur.com/BLjGiI3.png)
 
