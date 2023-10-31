@@ -1,6 +1,6 @@
 **What are your risk areas? Identify and describe them.**
 
-QA Process:
+QA Process: 
 Describe your QA process and include the SQL queries used to execute it.
 
 During my quality assurance process, there were a few things I wanted to check to make sure that the data cleaning and transformation I did made sense. The first step in my QA proces was to check that the primary keys of my tables which were "fullVisitorId" and "visitId" were all outputting unique values. 
