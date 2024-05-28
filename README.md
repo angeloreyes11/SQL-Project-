@@ -1,4 +1,4 @@
-# Final-Project-Transforming-and-Analyzing-Data-with-SQL
+# Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
 The goal of this project for me was to get a better understanding and polish up my skills in SQL as I felt like I knew nothing approaching this project. This project will help me have more practice in terms of creating my own steps in how to approach certain SQL questions and apply the knowledge I had gaine through lectures and compass to this project.
